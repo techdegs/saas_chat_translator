@@ -1,4 +1,4 @@
-import UserImage from "images/icons/user.svg"
+import Link from 'next/link'
 import {
   Cloud,
   CreditCard,
@@ -31,43 +31,35 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import UserAvatar from "./UserAvatar"
 
 export default function UserDropdown() {
+
+  //Session
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-            <Image 
-            priority
-            src={UserImage}
-            alt="logo"
-            className="dark:invert w-4 h-4"
-          />
-        </Button>
+        <UserAvatar name='Tech Degs' image="https://github.com/shadcn.png" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            <Link href="/profile" className="flex flex-row">
+              <User className="mr-2 h-4 w-4" />
+              <span>Profile</span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
+            <Link href="/" className="flex flex-row">
+              <CreditCard className="mr-2 h-4 w-4" />
             <span>Billing</span>
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Keyboard className="mr-2 h-4 w-4" />
-            <span>Keyboard shortcuts</span>
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
