@@ -1,3 +1,4 @@
+"use client"
 import Link from 'next/link'
 import {
   Cloud,
@@ -17,6 +18,7 @@ import {
 } from "lucide-react"
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
+import {Session} from 'next-auth'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,9 +34,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import UserAvatar from "./UserAvatar"
+import {signIn} from 'next-auth/react'
 
-export default function UserDropdown() {
-
+export default function UserDropdown({session}:{session: Session | null}) {
+  if(!session) return(
+    <Button variant={'outline'} onClick={() => signIn()}>
+      Login
+    </Button>
+  )
   //Session
   return (
     <DropdownMenu>
