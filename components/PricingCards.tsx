@@ -41,18 +41,18 @@ function PricingCards({redirect}:{redirect: boolean}) {
       <div className='mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2'>
       { 
         tiers.map((tier)=> (
-          <div key={tier.id} className='flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10'>
+          <div key={tier.id} className='flex flex-col justify-between rounded-3xl dark:bg-gray-900 bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10'>
             <div>
               <h3 id={tier.id + tier.name} className='text-base font-semibold leading-7 text-indigo-600'>{tier.name}</h3>
               <div className='mt-4 flex items-baseline gap-x-2'>
                 {
                   tier.priceMonthly ? (
                     <>
-                      <span className='text-5xl font-bold tracing-tight text-gray-900'>{tier.priceMonthly}</span>
+                      <span className='text-5xl font-bold tracing-tight dark:text-white'>{tier.priceMonthly}</span>
                       <span className='text-base font-semibold leading-7 text-gray-600'>/month</span>
                     </>
                   ): (
-                    <span className='text-5xl font-bold tracking-tight text-gray-900'>Free</span>
+                    <span className='text-5xl font-bold tracking-tight dark:text-white'>Free</span>
                   )
                 }
               </div>
