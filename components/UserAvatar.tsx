@@ -12,16 +12,16 @@ export default function UserAvatar({
   image, 
   className
 }:{
-  name: string;
-  image: string;
+  name?: string | null;
+  image?: string | null;
   className?: string;
 }) {
   return (
     <Avatar className={cn('bg-white text-black cursor-pointer', className)}>
       {image && (
         <Image
-          src={image || ""}
-          alt={name || ""}
+          src={image}
+          alt={name || "User name"}
           width={40}
           height={40}
           className="rounded-full"

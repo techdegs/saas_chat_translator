@@ -6,13 +6,13 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/auth'
 import {MessagesSquareIcon} from 'lucide-react'
 import Link from 'next/link'
+import CreateChatButton from './CreateChatButton'
 
 async function Header() {
   const session = await getServerSession(authOptions);
-  console.log(session)
 
   return (
-    <header className='sticky top-0 z-50 bg-white dark:bg-gray-900'>
+    <header className='sticky top-0 z-50 bg-white dark:bg-gray-900 pb-8'>
       <nav className='flex flex-col sm:flex-row items-center bg-white dark:bg-gray-900 max-w-7xl mx-auto'>
         <Logo />
 
@@ -25,6 +25,7 @@ async function Header() {
             session ? (
               <>
                 <Link href="/chat" prefetch={false}><MessagesSquareIcon /></Link>
+                <CreateChatButton />
               </>
             ):(
               <>

@@ -34,22 +34,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import UserAvatar from "./UserAvatar"
-import {signIn} from 'next-auth/react'
+import {signIn, signOut} from 'next-auth/react'
 
 export default function UserDropdown({session}:{session: Session | null}) {
+  //Subscription listener
+
+  
   if(!session) return(
     <Button variant={'outline'} onClick={() => signIn()}>
       Login
     </Button>
   )
   //Session
-  return (
+  return session && (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <UserAvatar name='Tech Degs' image="https://github.com/shadcn.png" />
+      <DropdownMenuTrigger>
+        <UserAvatar name={session.user?.name} image={session.user?.image} />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
@@ -118,10 +121,9 @@ export default function UserDropdown({session}:{session: Session | null}) {
           <span>API</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={()=> signOut()}>
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

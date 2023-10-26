@@ -21,7 +21,7 @@ export default function RootLayout({
     // to use useSession with clientproviders
     <ClientProviders> 
       <html lang="en">
-        <body className={inter.className}>
+        <body className="flex flex-col min-h-screen">
           <ThemeProvider 
             attribute="class"
             defaultTheme="system"
