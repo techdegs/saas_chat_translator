@@ -20,3 +20,7 @@ const adminDb = initFirestore({
     privateKey: process.env.FIREBASE_PRIVATE_KEY,
   }),
 });
+
+
+const adminAuth = admin.auth(app)
+export {adminDb, adminAuth}
