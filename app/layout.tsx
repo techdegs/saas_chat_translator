@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    // to use useSession with clientproviders
+    // to use useSession with client providers
     <ClientProviders> 
       <html lang="en">
         <body className="flex flex-col min-h-screen">
